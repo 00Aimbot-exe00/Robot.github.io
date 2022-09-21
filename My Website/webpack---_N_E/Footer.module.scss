@@ -1,0 +1,59 @@
+@import "../../../styles/abstracts";
+
+.footer {
+  position: relative;
+}
+
+.footerGrid {
+  @include appGrid;
+  align-items: end;
+  padding-bottom: 44px;
+  font-size: var(--title-4);
+
+  @media screen and (min-width: #{$screen-large}) {
+    padding-bottom: 72px;
+  }
+}
+
+.title {
+  grid-column-start: 1;
+  grid-column-end: 7;
+
+  @media screen and (min-width: #{$screen-large}) {
+    grid-column-end: 4;
+  }
+}
+
+.socialLinks {
+  margin: 20px 0 45px;
+  grid-column-start: 1;
+  grid-column-end: 7;
+
+  @media screen and (min-width: #{$screen-large}) {
+    margin: 0;
+    grid-column-start: 5;
+    grid-column-end: 9;
+  }
+
+  a {
+    @include hoverUnderline;
+    color: var(--main-color);
+  }
+}
+
+.team {
+  grid-column-start: 1;
+  grid-column-end: 7;
+
+  a {
+    @include hoverUnderline;
+    color: var(--main-color);
+  }
+
+  @media screen and (min-width: #{$screen-large}) {
+    grid-column-start: 9;
+    grid-column-end: 13;
+    justify-self: end;
+    text-align: right;
+  }
+}

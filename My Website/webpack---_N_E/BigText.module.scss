@@ -1,0 +1,38 @@
+@import "../../../styles/abstracts";
+
+.bigText {
+  position: relative;
+  font-size: var(--title-1);
+  line-height: 0.875;
+  text-transform: uppercase;
+}
+
+.srText {
+  @include srOnly;
+}
+
+.animatedChars {
+  @include fullAbsolute;
+  display: inline-block;
+  clip-path: inset(0 0 0.12em);
+  z-index: 10;
+
+  & > span {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    animation: chars-in 1.25s var(--primary-curve) forwards;
+    will-change: transform;
+    transform: translate3d(0, 80%, 0);
+  }
+}
+
+@keyframes chars-in {
+  to {
+    transform: var(--base-translate3d);
+  }
+}
+
+.passive {
+  opacity: 0;
+}

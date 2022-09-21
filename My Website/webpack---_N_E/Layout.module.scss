@@ -1,0 +1,52 @@
+@import "../../../styles/abstracts";
+
+.layout {
+  padding: 0 var(--layout-horizontal-padding);
+  background-color: var(--light-grey);
+
+  &.exiting {
+    pointer-events: none;
+  }
+}
+
+.main {
+  min-height: calc(100vh - var(--header-height) - 200px);
+  margin-top: var(--layout-top-padding);
+  overflow: hidden;
+}
+
+.layoutWipe {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--black);
+  z-index: 150;
+  pointer-events: none;
+  transform: var(--base-translate3d);
+  opacity: 0;
+  animation: layout-wipe 2.05s var(--primary-curve);
+}
+
+@keyframes layout-wipe {
+  0% {
+    transform: translate3d(0, 100%, 0);
+    opacity: 1;
+    animation-timing-function: var(--primary-curve);
+  }
+
+  40% {
+    transform: var(--base-translate3d);
+    animation-timing-function: var(--primary-curve);
+  }
+
+  61% {
+    opacity: 1;
+    animation-timing-function: var(--primary-curve);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

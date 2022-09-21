@@ -1,0 +1,17 @@
+.fadeIn {
+  opacity: 1;
+
+  &:not(.passive) {
+    animation: fade-in 1s var(--primary-curve);
+  }
+}
+
+.passive {
+  opacity: 0;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}

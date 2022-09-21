@@ -1,0 +1,84 @@
+@import "../../../styles/abstracts";
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px var(--layout-horizontal-padding) 38px;
+  font-size: var(--title-4);
+  color: var(--white);
+  background: var(--dark-teal);
+  overflow: auto;
+  clip-path: inset(100% 0 0 0);
+  z-index: 140;
+  transition: opacity 0.7s var(--primary-curve);
+  animation: mask-in 0.7s var(--primary-curve) forwards;
+
+  @media screen and (min-width: #{$screen-large}) {
+    display: none;
+  }
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menuContent {
+  margin-top: 100px;
+}
+
+.navLinks {
+  list-style-type: none;
+
+  a {
+    display: inline-block;
+  }
+
+  &:not(.activeLinkUnderlinePassive) {
+    .activeNavLink:after {
+      transform: var(--base-scale3d);
+    }
+  }
+}
+
+.activeNavLink {
+  position: relative;
+  margin-bottom: 7px;
+
+  @include after {
+    position: absolute;
+    right: 0;
+    bottom: -2px;
+    left: 0;
+    display: inline-block;
+    height: 5px;
+    background: var(--white);
+    transform: scale3d(0, 1, 1);
+    transition: transform 0.7s var(--primary-curve);
+    transform-origin: left;
+  }
+}
+
+.navItem {
+  line-height: 1.15;
+}
+
+.currentRole {
+  margin-top: 30px;
+}
+
+.location {
+  margin-top: 18px;
+}
+
+@keyframes mask-in {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}

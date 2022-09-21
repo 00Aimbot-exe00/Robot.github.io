@@ -1,0 +1,100 @@
+@import "../../../styles/abstracts";
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  color: var(--light-grey);
+  mix-blend-mode: difference;
+
+  @media screen and (min-width: #{$screen-large}) {
+    position: relative;
+  }
+}
+
+.stickyHeader {
+  position: sticky;
+}
+
+.headerGrid {
+  @include appGrid;
+  padding-top: 32px;
+  font-size: var(--title-4);
+  transform: translate3d(0, -100%, 0);
+  opacity: 0;
+  animation: header-in 1.25s var(--primary-curve) 1s forwards;
+
+  @media screen and (min-width: #{$screen-large}) {
+    height: var(--header-height);
+    padding-top: 42px;
+  }
+}
+
+.title {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.currentRole {
+  display: none;
+
+  @media screen and (min-width: #{$screen-large}) {
+    display: initial;
+    grid-column-start: 4;
+    grid-column-end: 7;
+  }
+}
+
+.location {
+  display: none;
+
+  @media screen and (min-width: #{$screen-large}) {
+    display: initial;
+    grid-column-start: 7;
+    grid-column-end: 10;
+  }
+}
+
+.navArea {
+  grid-column-start: 4;
+  grid-column-end: 7;
+  justify-self: end;
+
+  @media screen and (min-width: #{$screen-large}) {
+    grid-column-start: 10;
+    grid-column-end: 13;
+  }
+
+  .lgNav {
+    display: none;
+
+    @media screen and (min-width: #{$screen-large}) {
+      display: initial;
+    }
+  }
+
+  .mobileNav {
+    @media screen and (min-width: #{$screen-large}) {
+      display: none;
+    }
+  }
+}
+
+.navLink {
+  @include hoverUnderline(var(--light-grey));
+
+  &.active:after {
+    transform: var(--base-scale3d);
+  }
+}
+
+.mobileMenuExit {
+  opacity: 0;
+}
+
+@keyframes header-in {
+  to {
+    transform: var(--base-translate3d);
+    opacity: 1;
+  }
+}

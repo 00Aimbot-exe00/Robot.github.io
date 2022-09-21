@@ -1,0 +1,65 @@
+.smoothArea {
+  position: fixed;
+  top: 0;
+  right: var(--layout-horizontal-padding);
+  left: var(--layout-horizontal-padding);
+}
+
+.parallaxImageContainer {
+  display: flex;
+  overflow: hidden;
+
+  &.animateIn {
+    clip-path: inset(0 0 0 0);
+
+    &:not(.passive) {
+      animation: mask-in 1.25s var(--primary-curve);
+
+      .parallaxImageWrapper {
+        animation: scale-in 1.25s var(--primary-curve);
+      }
+    }
+  }
+}
+
+.parallaxImage {
+  width: 100%;
+  object-fit: cover;
+}
+
+.passive {
+  opacity: 0;
+}
+
+.scalableOnHover {
+  &:hover {
+    & > div {
+      transform: scale3d(1.05, 1.05, 1.05);
+    }
+  }
+}
+
+.parallaxImageWrapper {
+  transform: var(--base-scale3d);
+
+  &.scalable {
+    transform-origin: top;
+    transition: transform 1.25s var(--primary-curve);
+  }
+
+  &.scaleUp {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+}
+
+@keyframes mask-in {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale3d(1.3, 1.3, 1.3);
+  }
+}
